@@ -1,4 +1,4 @@
-# **Credit-Services**
+# **TestFrontend**
 
 Aby zainstalować ten przykład, uruchom następujące polecenia:
 ```bash
