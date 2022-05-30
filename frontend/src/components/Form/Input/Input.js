@@ -8,12 +8,12 @@ function Input(props) {
     age: "",
   });
   const [success, setSuccess] = useState(false);
-  const buttonDisabled = Object.values(errors).filter(x => x).length;
+  const buttonDisabled = Object.values(errors).filter((x) => x).length;
 
   const submit = (e) => {
     e.preventDefault();
-    if(!errors.age && !errors.name){
-    setSuccess(props.onSubmit({ name, age }));
+    if (!errors.age && !errors.name) {
+      setSuccess(props.onSubmit({ name, age }));
     }
   };
 
@@ -22,13 +22,13 @@ function Input(props) {
     const nameReg = /^[a-zA-Z]+$/;
     if (!text) {
       formIsValid = false;
-      errors["name"] = "Cannot be empty";
+      setErrors({ name: "Cannot be empty" });
     }
 
     if (typeof text !== "undefined") {
       if (!nameReg.test(text)) {
         formIsValid = false;
-        errors["name"] = "Only letters";
+        setErrors({ name: "Only letters" });
       }
     }
     return formIsValid;
@@ -40,12 +40,12 @@ function Input(props) {
     if (typeof text !== "undefined") {
       if (!ageReg.test(text)) {
         formIsValid = false;
-        errors["age"] = "Only numbers";
+        setErrors({ age: "Only numbers" });
       }
 
       if (age > 150 || age < 0) {
         formIsValid = false;
-        errors["age"] = "A value between 0 and 150";
+        setErrors({ age: "A value between 0 and 150" });
       }
     }
 
@@ -77,9 +77,7 @@ function Input(props) {
 
   return (
     <form onSubmit={submit}>
-      {success ? (
-        <div className="alert alert-success">Saved!</div>
-      ) : null}
+      {success ? <div className="alert alert-success">Saved!</div> : null}
       <div className="container">
         <div className="form-group text-left">
           <label>Name</label>
@@ -103,7 +101,9 @@ function Input(props) {
           />
           <div className="invalid-feedback">{errors.age}</div>
         </div>
-        <button className="btn btn-primary" disabled={buttonDisabled}>Save</button>
+        <button className="btn btn-primary" disabled={buttonDisabled}>
+          Save
+        </button>
       </div>
     </form>
   );

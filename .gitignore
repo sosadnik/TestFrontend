@@ -34,7 +34,7 @@ build/
 
 # dependencies
 frontend/node_modules
-/.pnp
+frontend/.pnp
 .pnp.js
 
 # testing

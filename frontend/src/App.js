@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Menu className="manu" />
+        <Menu/>
         {content}
       </Router>
     </div>
